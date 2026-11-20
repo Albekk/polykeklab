@@ -1,0 +1,37 @@
+﻿/* Required laboratory CSS: preserve these dimensions and table rules. */
+.layout {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+}
+.layout tr td {
+    padding: 20px;
+    vertical-align: top;
+    border: solid 1px gray;
+}
+.header { font-size: 30px; }
+.footer { text-align: center; }
+.sidebarHeader { font-size: 20px; }
+.sidebar ul { padding-left: 20px; }
+a, a:visited { color: darkgreen; }
+
+/* Original visual treatment; the sidebar is placed before the content. */
+.blog-card { width: calc(100% - 64px); max-width: 1024px; margin: 40px auto; }
+.blog-toolbar { display: flex; justify-content: flex-end; margin-bottom: 16px; font-size: 14px; }
+.header { background: #f1eee4; color: #4c5136; }
+.sidebar { width: 250px; background: #f5f6ef; }
+.sidebarHeader { color: #4c5136; padding-bottom: 12px; border-bottom: 3px solid #b29a64; }
+.sidebar li { margin: 10px 0; }
+.content { height: 280px; }
+.content h1 { margin-top: 0; font-size: 26px; line-height: 1.35; color: #395540; }
+.content article { margin-bottom: 25px; }
+.author { display: inline-block; padding: 6px 12px; background: #eff2e5; border-left: 3px solid #b29a64; color: #4c5136; }
+.content input, .content button { font: inherit; padding: 8px; max-width: 100%; }
+@media(max-width:700px) {
+    .blog-card { width: calc(100% - 32px); margin: 28px auto; }
+    .layout, .layout tbody, .layout tr, .layout td { display: block; width: 100%; }
+    .sidebar ul { display: flex; flex-wrap: wrap; gap: 4px 26px; }
+    .content { height: auto; min-height: 200px; }
+}

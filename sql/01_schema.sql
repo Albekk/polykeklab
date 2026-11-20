@@ -1,0 +1,26 @@
+-- MySQL 5.7+/8.x, MariaDB. Import into an existing database; no CREATE DATABASE privilege needed.
+SET NAMES utf8mb4;
+CREATE TABLE IF NOT EXISTS contacts (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ surname VARCHAR(100) NOT NULL,
+ name VARCHAR(100) NOT NULL,
+ patronymic VARCHAR(100) NOT NULL DEFAULT '',
+ gender VARCHAR(20) NOT NULL DEFAULT 'не указан',
+ birth_date DATE NULL,
+ phone VARCHAR(40) NOT NULL DEFAULT '',
+ address VARCHAR(255) NOT NULL DEFAULT '',
+ email VARCHAR(254) NOT NULL DEFAULT '',
+ comment TEXT NOT NULL,
+ INDEX idx_contacts_surname (surname,name), INDEX idx_contacts_birth (birth_date)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS users (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ nickname VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS articles (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ user_id INT UNSIGNED NULL,
+ title VARCHAR(255) NOT NULL,
+ body TEXT NOT NULL,
+ CONSTRAINT fk_articles_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

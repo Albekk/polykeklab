@@ -1,0 +1,7 @@
+/config.php
+/.runtime/
+/.idea/
+/.vscode/
+*.log
+.env
+/.DS_Store
